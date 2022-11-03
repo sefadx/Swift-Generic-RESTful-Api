@@ -29,3 +29,14 @@ extension Post {
         }
     }
 }
+
+extension UserAndPosts {
+    static var fakeUsersAndPosts: [UserAndPosts] {
+        var newUsersAndPosts: [UserAndPosts] = []
+        for user in User.fakeUsers {
+            let newUserAndPosts = UserAndPosts(user: user, posts: Post.fakePosts.filter { $0.userId == user.id })
+            newUsersAndPosts.append(newUserAndPosts)
+        }
+        return newUsersAndPosts
+    }
+}
